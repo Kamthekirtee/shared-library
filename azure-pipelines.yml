@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -29,4 +30,9 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
+
+- task: dependency-check-build-task@6
+  inputs:
+    projectName: 'testazure'
+    scanPath: '''directory/**/*.jar'
+    format: 'HTML'
